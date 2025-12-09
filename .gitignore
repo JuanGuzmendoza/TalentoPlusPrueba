@@ -1,0 +1,75 @@
+##############################
+# .NET / Visual Studio
+##############################
+
+# Build folders
+bin/
+obj/
+
+# Visual Studio working folder
+.vs/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Backup & cache files
+*_i.c
+*_p.c
+*_h.h
+*.cache
+*.pdb
+*.mdb
+
+# NuGet
+*.nupkg
+packages/
+*.snupkg
+.project.json
+
+# Rider / VS Code
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+##############################
+# OS-generated files
+##############################
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Temp
+*.tmp
+*.temp
+
+##############################
+# Others
+##############################
+
+# Publish
+publish/
+dist/
+
+# Coverage
+coverage/
+*.coverage
+*.coveragexml
+
+# Entity Framework
+Migrations/
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
