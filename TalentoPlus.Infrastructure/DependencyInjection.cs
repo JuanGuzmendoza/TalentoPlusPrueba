@@ -1,6 +1,6 @@
-﻿using TalentoPlus.Domain.Entities;
+﻿using TalentoPlus.Domain.Interfaces;
 using TalentoPlus.Infrastructure.Persistence.Context;
-using Microsoft.AspNetCore.Identity;
+using TalentoPlus.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,10 +15,10 @@ namespace TalentoPlus.Infrastructure
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
-            // 2. Configurar el almacenamiento de Identity (Solo la parte de datos)
-            // Nota: La parte de "AddIdentityApiEndpoints" es de la capa de API, 
-            // pero la conexión con EF Core va aquí.
-
+            // 2. INYECCIÓN DEL REPOSITORIO GENÉRICO
+            // Esto permite inyectar IGenericRepository<Employee> o IGenericRepository<Department>
+            // sin tener que crear clases específicas.
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             return services;
         }
     }

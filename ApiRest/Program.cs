@@ -4,7 +4,7 @@ using TalentoPlus.Infrastructure; // Para usar DependencyInjection de Infrastruc
 using TalentoPlus.Infrastructure.Persistence;
 using TalentoPlus.Infrastructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
-
+using TalentoPlus.Application;      // Para AddApplication
 var builder = WebApplication.CreateBuilder(args);
 
 // ==========================================
@@ -13,7 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Capa de Infraestructura (Base de datos)
 builder.Services.AddInfrastructure(builder.Configuration);
-
+builder.Services.AddApplication();
+builder.Services.AddHttpClient();
 // Capa de API (Auth, Identity, Controllers, Swagger)
 builder.Services.AddApiConfiguration();
 builder.Services.AddSwaggerConfiguration();

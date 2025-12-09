@@ -18,12 +18,19 @@ namespace TalentoPlus.Extensions
 
             services.AddIdentityApiEndpoints<User>(options =>
             {
+                // 1. RELAJAR POLITICAS DE PASSWORD (Para que acepte cédulas)
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequiredLength = 6;
-                options.User.RequireUniqueEmail = true;
+                options.Password.RequireNonAlphanumeric = false; // Permite sin simbolos (!@#)
+                options.Password.RequiredLength = 6; // Minimo 6 caracteres
+
+                // 2. PERMITIR CARACTERES EN EL USUARIO (Para tildes en correos)
+                options.User.AllowedUserNameCharacters = 
+                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+ñÑáéíóúÁÉÍÓÚ";
+    
+                // 3. VALIDACION DE EMAIL UNICA
+                options.User.RequireUniqueEmail = true; 
             })
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
