@@ -26,7 +26,6 @@ namespace TalentoPlus.Infrastructure.Repositories
             return await query.ToListAsync();
         }
 
-        // Simplificado para soportar Guid e Int automáticamente
         public async Task<T?> GetByIdAsync(object id)
         {
             return await _dbSet.FindAsync(id);
@@ -35,8 +34,6 @@ namespace TalentoPlus.Infrastructure.Repositories
         public async Task<T> AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
-            // No hacemos SaveChanges aquí para permitir transacciones o unidades de trabajo, 
-            // pero si quieres guardar de una vez, descomenta la siguiente línea:
             await _context.SaveChangesAsync(); 
             return entity;
         }
@@ -50,7 +47,7 @@ namespace TalentoPlus.Infrastructure.Repositories
         public Task UpdateAsync(T entity)
         {
             _dbSet.Update(entity);
-            return _context.SaveChangesAsync(); // Se suele guardar al actualizar
+            return _context.SaveChangesAsync(); 
         }
 
         public async Task DeleteAsync(object id)

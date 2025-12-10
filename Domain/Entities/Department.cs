@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-
+using System.Text.Json.Serialization;
 namespace TalentoPlus.Domain.Entities
 {
     public class Department
@@ -10,7 +10,7 @@ namespace TalentoPlus.Domain.Entities
         [MaxLength(100)]
         public string Name { get; set; } = string.Empty;
 
-        // Relación: Un departamento tiene muchos empleados
+        [JsonIgnore] 
         public ICollection<Employee>? Employees { get; set; }
     }
 }

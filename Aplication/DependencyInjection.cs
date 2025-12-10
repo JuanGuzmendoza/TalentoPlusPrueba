@@ -9,8 +9,12 @@ namespace TalentoPlus.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IDepartmentService, DepartmentService>();
 
-            
+            services.AddScoped<IDateParserService, DateParserService>();
+            services.AddScoped<IUserAccountService, UserAccountService>();
+            services.AddScoped<IEmailNotificationService, EmailNotificationService>();
+
             return services;
         }
     }

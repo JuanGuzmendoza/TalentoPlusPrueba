@@ -12,7 +12,6 @@ namespace TalentoPlus.Domain.Entities
         [MaxLength(50)]
         public string DocumentNumber { get; set; } = string.Empty; // Documento
 
-        // --- CAMBIO: Separación de Nombres y Apellidos ---
         [Required]
         [MaxLength(100)]
         public string FirstName { get; set; } = string.Empty; // Nombres
@@ -21,10 +20,8 @@ namespace TalentoPlus.Domain.Entities
         [MaxLength(100)]
         public string LastName { get; set; } = string.Empty;  // Apellidos
 
-        // --- NUEVO: Fecha de Nacimiento (estaba en la imagen) ---
         public DateTime BirthDate { get; set; } // FechaNacimiento
 
-        // --- NUEVO: Dirección (solicitado) ---
         [MaxLength(200)]
         public string Address { get; set; } = string.Empty; // Direccion
 
@@ -41,17 +38,15 @@ namespace TalentoPlus.Domain.Entities
         [Column(TypeName = "decimal(18,2)")]
         public decimal Salary { get; set; }
 
-        public DateTime HireDate { get; set; } // FechaIngreso
+        public DateTime HireDate { get; set; } 
 
         public EmployeeStatus Status { get; set; } = EmployeeStatus.Activo;
 
-        public string EducationLevel { get; set; } = string.Empty; // NivelEducativo
+        public string EducationLevel { get; set; } = string.Empty; 
 
-        // --- NUEVO: Perfil Profesional (estaba en la imagen) ---
         [MaxLength(500)] 
-        public string ProfessionalProfile { get; set; } = string.Empty; // PerfilProfesional
+        public string ProfessionalProfile { get; set; } = string.Empty; 
 
-        // --- Relaciones ---
 
         public int DepartmentId { get; set; }
         public Department? Department { get; set; }

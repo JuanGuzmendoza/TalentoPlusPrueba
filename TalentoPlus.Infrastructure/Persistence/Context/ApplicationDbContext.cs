@@ -10,7 +10,6 @@ namespace TalentoPlus.Infrastructure.Persistence.Context
         {
         }
 
-        // Tablas del dominio
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
 

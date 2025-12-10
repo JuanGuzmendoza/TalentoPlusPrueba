@@ -8,15 +8,12 @@ namespace TalentoPlus.Infrastructure.Persistence
     {
         public static async Task SeedAsync(IServiceProvider serviceProvider)
         {
-            // Obtenemos los servicios necesarios del contenedor de inyección de dependencias
             var userManager = serviceProvider.GetRequiredService<UserManager<User>>();
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-            // 1. Crear Roles si no existen
             await CreateRoleAsync(roleManager, "Admin");
             await CreateRoleAsync(roleManager, "User");
 
-            // 2. Crear Usuario Admin
             var adminEmail = "admin@prueba.com";
             var adminUser = await userManager.FindByEmailAsync(adminEmail);
 
@@ -39,7 +36,6 @@ namespace TalentoPlus.Infrastructure.Persistence
                 }
             }
 
-            // 3. Crear Usuario Normal
             var userEmail = "usuario@prueba.com";
             var normalUser = await userManager.FindByEmailAsync(userEmail);
 
